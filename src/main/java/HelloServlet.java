@@ -55,7 +55,7 @@ public class HelloServlet extends HttpServlet {
         resp.getWriter().println("--- Create and persist parent ---");
         transaction = em.getTransaction();
         transaction.begin();
-        Parent parent = parserv.createParent(1, "NameParent", );
+        Parent parent = parserv.createParent(1, "NameParent", "Child1", "Child2");
         transaction.commit();
         resp.getWriter().println(String.format("Persisted: %s\n", parent));
 
@@ -71,7 +71,7 @@ public class HelloServlet extends HttpServlet {
 
         resp.getWriter().println("--- Update parent ---");
         transaction.begin();
-        parent = parserv.changeParentGenre(1, "Indie Rock");
+        parent = parserv.changeChild1Name(1, "Indie Rock");
         transaction.commit();
         resp.getWriter().println(String.format("Updated: %s\n", parent));
 
