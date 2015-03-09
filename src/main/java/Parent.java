@@ -15,6 +15,14 @@ public class Parent {
     @OneToOne
     private Child ch2;
 
+    public Parent(int id, String name, String name1, String name2) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Parent() {
+    }
+
     public int getId() {
         return id;
     }
@@ -45,5 +53,9 @@ public class Parent {
 
     public void setCh1(Child ch1) {
         this.ch1 = ch1;
+    }
+
+    public void setCh1Name(String ch1) {
+        this.ch1.name = ch1;
     }
 }

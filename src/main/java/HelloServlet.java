@@ -51,6 +51,38 @@ public class HelloServlet extends HttpServlet {
         artist = service.findArtist(1);
         resp.getWriter().println(String.format("Found: %s\n", artist));
 
+        ParentService parserv = new ParentService(em);
+        resp.getWriter().println("--- Create and persist parent ---");
+        transaction = em.getTransaction();
+        transaction.begin();
+        Parent parent = parserv.createParent(1, "NameParent", );
+        transaction.commit();
+        resp.getWriter().println(String.format("Persisted: %s\n", parent));
+
+        resp.getWriter().println("--- Find parent ---");
+        parent = parserv.findParent(1);
+        resp.getWriter().println(String.format("Found: %s\n", parent));
+
+        resp.getWriter().println("--- Find all parents ---");
+        List<Parent> parents = parserv.findAllParents();
+        for (Parent foundParent : parents) {
+            resp.getWriter().println(String.format("Found: %s\n", foundParent));
+        }
+
+        resp.getWriter().println("--- Update parent ---");
+        transaction.begin();
+        parent = parserv.changeParentGenre(1, "Indie Rock");
+        transaction.commit();
+        resp.getWriter().println(String.format("Updated: %s\n", parent));
+
+        resp.getWriter().println("--- Remove parent ---");
+        transaction.begin();
+        parserv.removeParent(1);
+        transaction.commit();
+        parent = parserv.findParent(1);
+        resp.getWriter().println(String.format("Found: %s\n", parent));
+        
+
         resp.getWriter().println("<b> Hello World!! </b>");
     }
 
