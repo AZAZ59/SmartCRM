@@ -1,14 +1,9 @@
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * Created by Grand on 03.03.2015.
@@ -17,7 +12,7 @@ import java.util.List;
 public class HelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("JpaBasicsTutorial");
+        /*EntityManagerFactory emf = Persistence.createEntityManagerFactory("JpaBasicsTutorial");
         EntityManager em = emf.createEntityManager();
         ArtistService service = new ArtistService(em);
 
@@ -51,11 +46,11 @@ public class HelloServlet extends HttpServlet {
         artist = service.findArtist(1);
         resp.getWriter().println(String.format("Found: %s\n", artist));
 
-        ParentService parserv = new ParentService(em);
+        UniversityService parserv = new UniversityService(em);
         resp.getWriter().println("--- Create and persist parent ---");
         transaction = em.getTransaction();
         transaction.begin();
-        Parent parent = parserv.createParent(1, "NameParent", "Child1", "Child2");
+        University parent = parserv.createParent(1, "NameParent", "Child1", "Child2");
         transaction.commit();
         resp.getWriter().println(String.format("Persisted: %s\n", parent));
 
@@ -64,8 +59,8 @@ public class HelloServlet extends HttpServlet {
         resp.getWriter().println(String.format("Found: %s\n", parent));
 
         resp.getWriter().println("--- Find all parents ---");
-        List<Parent> parents = parserv.findAllParents();
-        for (Parent foundParent : parents) {
+        List<University> parents = parserv.findAllParents();
+        for (University foundParent : parents) {
             resp.getWriter().println(String.format("Found: %s\n", foundParent));
         }
 
@@ -83,7 +78,7 @@ public class HelloServlet extends HttpServlet {
         resp.getWriter().println(String.format("Found: %s\n", parent));
         
 
-        resp.getWriter().println("<b> Hello World!! </b>");
+        resp.getWriter().println("<b> Hello World!! </b>");*/
     }
 
 
