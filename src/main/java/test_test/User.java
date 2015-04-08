@@ -1,18 +1,42 @@
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+package test_test;
+
+import javax.persistence.*;
 
 /**
  * Created by Grand on 31.03.2015.
  */
-@Entity
+@Entity(name = "user")
+@Table(name = "User")
 public class User {
-    @Id
-    private Integer id;
+
     @Column
     String name;
     @Column
     String password;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "Groups_id", nullable = false)
+    private Group group;
+    @OneToOne(optional = false)
+    @JoinColumn(name = "UserRights_id", unique = true, nullable = false, updatable = false)
+    private UserRights rights;
+    @Id
+    private Integer id;
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
+    public UserRights getRights() {
+        return rights;
+    }
+
+    public void setRights(UserRights rights) {
+        this.rights = rights;
+    }
 
     public Integer getId() {
         return this.id;

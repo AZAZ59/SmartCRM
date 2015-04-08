@@ -1,15 +1,24 @@
+package test_test;
+
 import javax.persistence.*;
+import java.util.Set;
 
 
 /**
  * Created by Grand on 31.03.2015.
  */
-@Entity
-
+@Entity(name = "group")
+@Table(name = "Groups")
 public class Group {
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @Id
+    Integer id;
+    @Column
+    String nameGroup;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "University_id", nullable = false)
     private University university;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "group")
+    private Set<User> users;
 
     public University getUniversity() {
         return university;
@@ -19,12 +28,13 @@ public class Group {
         this.university = university;
     }
 
-    @Id
-    Integer id;
+    public Set<User> getUsers() {
+        return users;
+    }
 
-    @Column
-    String nameGroup;
-
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
 
     public int getId() {
         return id;

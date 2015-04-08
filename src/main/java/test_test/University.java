@@ -1,15 +1,18 @@
+package test_test;
+
 import javax.persistence.*;
 import java.util.Set;
 
 /**
  * Created by azaz on 09.03.15.
  */
-@Entity
+@Entity(name = "university")
+@Table(name = "University")
 public class University {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "university")
     private Set<Group> groups;
     @Id
-    private int id;
+    private Integer id;
     @Column
     private String name;
 
@@ -19,6 +22,14 @@ public class University {
     }
 
     public University() {
+    }
+
+    public Set<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(Set<Group> groups) {
+        this.groups = groups;
     }
 
     public int getId() {
@@ -37,11 +48,5 @@ public class University {
         this.name = name;
     }
 
-    public Set<Group> getGroups() {
-        return groups;
-    }
 
-    public void setGroups(Set<Group> groups) {
-        this.groups = groups;
-    }
 }

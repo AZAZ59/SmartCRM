@@ -1,3 +1,8 @@
+package test_test;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,8 +17,12 @@ import java.io.IOException;
 public class HelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        /*EntityManagerFactory emf = Persistence.createEntityManagerFactory("JpaBasicsTutorial");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("JpaBasicsTutorial");
+
         EntityManager em = emf.createEntityManager();
+        resp.getWriter().println("HEEELOOO");
+
+        /*
         ArtistService service = new ArtistService(em);
 
         resp.getWriter().println("--- Create and persist artist ---");
@@ -46,11 +55,11 @@ public class HelloServlet extends HttpServlet {
         artist = service.findArtist(1);
         resp.getWriter().println(String.format("Found: %s\n", artist));
 
-        UniversityService parserv = new UniversityService(em);
+        test_test.UniversityService parserv = new test_test.UniversityService(em);
         resp.getWriter().println("--- Create and persist parent ---");
         transaction = em.getTransaction();
         transaction.begin();
-        University parent = parserv.createParent(1, "NameParent", "Child1", "Child2");
+        test_test.University parent = parserv.createParent(1, "NameParent", "Child1", "Child2");
         transaction.commit();
         resp.getWriter().println(String.format("Persisted: %s\n", parent));
 
@@ -59,8 +68,8 @@ public class HelloServlet extends HttpServlet {
         resp.getWriter().println(String.format("Found: %s\n", parent));
 
         resp.getWriter().println("--- Find all parents ---");
-        List<University> parents = parserv.findAllParents();
-        for (University foundParent : parents) {
+        List<test_test.University> parents = parserv.findAllParents();
+        for (test_test.University foundParent : parents) {
             resp.getWriter().println(String.format("Found: %s\n", foundParent));
         }
 
