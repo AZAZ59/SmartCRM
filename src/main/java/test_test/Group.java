@@ -1,6 +1,7 @@
 package test_test;
 
 import javax.persistence.*;
+import javax.ws.rs.GET;
 import java.util.Set;
 
 
