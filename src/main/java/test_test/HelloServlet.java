@@ -16,7 +16,7 @@ import java.io.IOException;
 @WebServlet(name = "hello", urlPatterns = "/")
 public class HelloServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("JpaBasicsTutorial");
 
         EntityManager em = emf.createEntityManager();

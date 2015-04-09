@@ -20,6 +20,10 @@ public class Group {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "group")
     private Set<User> users;
 
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "group")
+    private Set<Message> messages;
+
     public University getUniversity() {
         return university;
     }
@@ -50,5 +54,13 @@ public class Group {
 
     public void setNameGroup(String nameGroup) {
         this.nameGroup = nameGroup;
+    }
+
+    public Set<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(Set<Message> messages) {
+        this.messages = messages;
     }
 }
