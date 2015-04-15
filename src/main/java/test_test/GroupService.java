@@ -12,7 +12,7 @@ public class GroupService {
         this.em = em;
     }
 
-    public Group createGroup(int id, String name, String genre) {
+    /*public Group createGroup(int id, String name, String genre) {
 
     }
 
@@ -30,5 +30,5 @@ public class GroupService {
 
     public List<Group> findAllGroups() {
         
-    }
+    }*/
 }

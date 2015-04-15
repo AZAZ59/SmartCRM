@@ -10,7 +10,8 @@ import javax.persistence.*;
 public class UserRights {
     @Column
     Integer rights; //0 - обычный юзер, 1 - админ
-    @OneToOne(mappedBy = "userRights")
+    //@OneToOne(optional = false,mappedBy = "userRights")
+    @OneToOne
     private User user;
     @Id
     private Integer id;

@@ -16,19 +16,13 @@ public class User {
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "Groups_id", nullable = false)
     private Group group;
-    @OneToOne(optional = false)
-    @JoinColumn(name = "UserRights_id", unique = true, nullable = false, updatable = false)
+
+    //@OneToOne(optional = false)
+    //@JoinColumn(name = "UserRights_id", unique = true, nullable = false, updatable = false)
+    @OneToOne
     private UserRights rights;
     @Id
     private Integer id;
-
-    public Group getGroup() {
-        return group;
-    }
-
-    public void setGroup(Group group) {
-        this.group = group;
-    }
 
     public UserRights getRights() {
         return rights;
@@ -36,6 +30,14 @@ public class User {
 
     public void setRights(UserRights rights) {
         this.rights = rights;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
     }
 
     public Integer getId() {

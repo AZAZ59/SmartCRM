@@ -13,7 +13,8 @@ import java.io.IOException;
 /**
  * Created by Grand on 03.03.2015.
  */
-@WebServlet(name = "hello", urlPatterns = "/")
+//@WebServlet(name = "hello", urlPatterns = "/")
+@WebServlet(name = "hello", urlPatterns = "/servlet")
 public class HelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
