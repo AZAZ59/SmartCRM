@@ -14,6 +14,7 @@ public class UserRights {
     @OneToOne
     private User user;
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     public User getUser() {

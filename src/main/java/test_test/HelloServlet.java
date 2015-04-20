@@ -2,6 +2,7 @@ package test_test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Grand on 03.03.2015.
@@ -22,7 +25,40 @@ public class HelloServlet extends HttpServlet {
 
         EntityManager em = emf.createEntityManager();
         resp.getWriter().println("HEEELOOO");
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        University university = new University();
+        Group group = new Group();
+        Set<Group> groupSet = new HashSet<Group>();
+        Set<User> userSet = new HashSet<User>();
+        User user = new User();
+        UserRights userRights = new UserRights();
 
+        user.setName("AZAZ");
+        user.setGroup(group);
+        user.setPassword("123");
+
+        userRights.setRights(1);
+        userRights.setUser(user);
+        user.setRights(userRights);
+
+        university.setName("SSAU");
+
+        group.setNameGroup("123");
+        group.setUniversity(university);
+
+        groupSet.add(group);
+        userSet.add(user);
+
+        group.setUsers(userSet);
+
+        university.setGroups(groupSet);
+        em.persist(user);
+        em.persist(userRights);
+        em.persist(group);
+        em.persist(university);
+
+        transaction.commit();
         /*
         ArtistService service = new ArtistService(em);
 

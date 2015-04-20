@@ -1,7 +1,6 @@
 package test_test;
 
 import javax.persistence.*;
-import javax.ws.rs.GET;
 import java.util.Set;
 
 
@@ -12,6 +11,7 @@ import java.util.Set;
 @Table(name = "Groups")
 public class Group {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
     @Column
     String nameGroup;

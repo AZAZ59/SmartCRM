@@ -10,6 +10,7 @@ import java.util.Date;
 @Table(name = "Message")
 public class Message {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
     @Column
     String message;

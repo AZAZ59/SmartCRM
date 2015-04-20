@@ -12,6 +12,7 @@ public class University {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "university")
     private Set<Group> groups;
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @Column
     private String name;

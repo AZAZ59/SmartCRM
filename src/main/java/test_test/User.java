@@ -21,7 +21,9 @@ public class User {
     //@JoinColumn(name = "UserRights_id", unique = true, nullable = false, updatable = false)
     @OneToOne
     private UserRights rights;
+
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     public UserRights getRights() {
