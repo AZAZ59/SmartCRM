@@ -1,12 +1,18 @@
 package test_test;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.Set;
 
 
 /**
  * Created by Grand on 31.03.2015.
  */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @Entity(name = "group")
 @Table(name = "Groups")
 public class Group {
@@ -17,12 +23,15 @@ public class Group {
     String nameGroup;
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "University_id", nullable = false)
+    @XmlTransient
     private University university;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "group")
+    @XmlTransient
     private Set<User> users;
 
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "group")
+    @XmlTransient
     private Set<Message> messages;
 
     public University getUniversity() {
@@ -63,5 +72,16 @@ public class Group {
 
     public void setMessages(Set<Message> messages) {
         this.messages = messages;
+    }
+
+    @Override
+    public String toString() {
+        return "Group{" +
+                "id=" + id +
+                ", nameGroup='" + nameGroup + '\'' +
+                ", university=" + university +
+                ", users=" + users +
+                ", messages=" + messages +
+                '}';
     }
 }

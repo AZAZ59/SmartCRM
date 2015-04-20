@@ -1,4 +1,6 @@
-package test_test;
+package test_test.services;
+
+import test_test.University;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -44,7 +46,7 @@ public class UniversityService {
     }
 
     public List<University> findAllParents() {
-        TypedQuery<University> query = em.createQuery("SELECT a FROM University a", University.class);
+        TypedQuery<University> query = em.createQuery("SELECT a FROM university a", University.class);
         return query.getResultList();
     }
 }

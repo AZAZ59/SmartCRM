@@ -2,9 +2,6 @@ package test_test;
 
 import javax.persistence.*;
 
-/**
- * Created by Grand on 31.03.2015.
- */
 @Entity(name = "user")
 @Table(name = "User")
 public class User {
@@ -63,7 +60,8 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = MD5(password);
+        //this.password = MD5(password);
+        this.password = password;
     }
 
     public String MD5(String md5) {

@@ -8,6 +8,8 @@ import java.util.Set;
  */
 @Entity(name = "university")
 @Table(name = "University")
+/*@XmlRootElement
+@XmlAccessorType(value = XmlAccessType.FIELD)*/
 public class University {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "university")
     private Set<Group> groups;

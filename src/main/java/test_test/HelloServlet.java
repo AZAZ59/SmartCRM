@@ -1,5 +1,7 @@
 package test_test;
 
+import test_test.services.Variables;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -24,11 +26,14 @@ public class HelloServlet extends HttpServlet {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("JpaBasicsTutorial");
 
         EntityManager em = emf.createEntityManager();
+        Variables.em = em;
         resp.getWriter().println("HEEELOOO");
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
+
         University university = new University();
         Group group = new Group();
+        Group group2 = new Group();
         Set<Group> groupSet = new HashSet<Group>();
         Set<User> userSet = new HashSet<User>();
         User user = new User();
@@ -47,7 +52,11 @@ public class HelloServlet extends HttpServlet {
         group.setNameGroup("123");
         group.setUniversity(university);
 
+        group2.setNameGroup("second");
+        group2.setUniversity(university);
+
         groupSet.add(group);
+        groupSet.add(group2);
         userSet.add(user);
 
         group.setUsers(userSet);
@@ -56,6 +65,7 @@ public class HelloServlet extends HttpServlet {
         em.persist(user);
         em.persist(userRights);
         em.persist(group);
+        em.persist(group2);
         em.persist(university);
 
         transaction.commit();
@@ -92,7 +102,7 @@ public class HelloServlet extends HttpServlet {
         artist = service.findArtist(1);
         resp.getWriter().println(String.format("Found: %s\n", artist));
 
-        test_test.UniversityService parserv = new test_test.UniversityService(em);
+        test_test.services.UniversityService parserv = new test_test.services.UniversityService(em);
         resp.getWriter().println("--- Create and persist parent ---");
         transaction = em.getTransaction();
         transaction.begin();
