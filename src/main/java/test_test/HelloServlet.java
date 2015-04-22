@@ -137,5 +137,54 @@ public class HelloServlet extends HttpServlet {
         resp.getWriter().println("<b> Hello World!! </b>");*/
     }
 
+    @Override
+    public void init() throws ServletException {
 
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("JpaBasicsTutorial");
+
+        EntityManager em = emf.createEntityManager();
+        Variables.em = em;
+        System.err.println("HEEELOOO");
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+
+        University university = new University();
+        Group group = new Group();
+        Group group2 = new Group();
+        Set<Group> groupSet = new HashSet<Group>();
+        Set<User> userSet = new HashSet<User>();
+        User user = new User();
+        UserRights userRights = new UserRights();
+
+        user.setName("AZAZ");
+        user.setGroup(group);
+        user.setPassword("123");
+
+        userRights.setRights(1);
+        userRights.setUser(user);
+        user.setRights(userRights);
+
+        university.setName("SSAU");
+
+        group.setNameGroup("123");
+        group.setUniversity(university);
+
+        group2.setNameGroup("second");
+        group2.setUniversity(university);
+
+        groupSet.add(group);
+        groupSet.add(group2);
+        userSet.add(user);
+
+        group.setUsers(userSet);
+
+        university.setGroups(groupSet);
+        em.persist(user);
+        em.persist(userRights);
+        em.persist(group);
+        em.persist(group2);
+        em.persist(university);
+
+        transaction.commit();
+    }
 }

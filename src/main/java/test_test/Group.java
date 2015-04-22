@@ -19,12 +19,14 @@ public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
+
     @Column
     String nameGroup;
+
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "University_id", nullable = false)
-    @XmlTransient
     private University university;
+
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "group")
     @XmlTransient
     private Set<User> users;

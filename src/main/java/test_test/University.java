@@ -1,21 +1,28 @@
 package test_test;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.Set;
 
 /**
  * Created by azaz on 09.03.15.
  */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @Entity(name = "university")
 @Table(name = "University")
-/*@XmlRootElement
-@XmlAccessorType(value = XmlAccessType.FIELD)*/
 public class University {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "university")
+    @XmlTransient
     private Set<Group> groups;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     @Column
     private String name;
 

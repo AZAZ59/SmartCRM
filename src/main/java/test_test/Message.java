@@ -1,17 +1,24 @@
 package test_test;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.Date;
 
 /**
  * Created by Grand on 09.04.2015.
  */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @Entity(name = "message")
 @Table(name = "Message")
 public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
+
     @Column
     String message;
 
@@ -26,6 +33,7 @@ public class Message {
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "Groups_id", nullable = false)
+    @XmlTransient
     private Group group;
 
     public Date getDateField() {

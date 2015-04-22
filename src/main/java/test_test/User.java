@@ -1,21 +1,26 @@
 package test_test;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @Entity(name = "user")
 @Table(name = "User")
 public class User {
-
     @Column
     String name;
+
     @Column
     String password;
+
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "Groups_id", nullable = false)
+    //@XmlTransient
     private Group group;
 
-    //@OneToOne(optional = false)
-    //@JoinColumn(name = "UserRights_id", unique = true, nullable = false, updatable = false)
     @OneToOne
     private UserRights rights;
 

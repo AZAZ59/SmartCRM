@@ -18,15 +18,9 @@ import java.util.List;
 @Path("/group")
 public class GroupService {
     private EntityManager em;
-
-    //public GroupService(EntityManager em) {
-    //    this.em = em;
-    //}
-
     @GET
     @Path("all")
     @Produces("application/json")
-    //@Produces(MediaType)
     public List<Group> findAllParents() {
         if (em == null) {
             if (Variables.em == null) {
@@ -34,8 +28,7 @@ public class GroupService {
             }
             em = Variables.em;
         }
-        System.out.println("ASDASDASD");
-        //Query q = em.createQuery("select from Group");
+//        System.out.println("ASDASDASD");
         TypedQuery<Group> query = em.createQuery("SELECT a FROM  group a", Group.class);
 
         return query.getResultList();
