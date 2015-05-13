@@ -1,14 +1,17 @@
 package com.avilyne.rest.resource;
 
 import test_test.Group;
+import test_test.University;
 import test_test.services.Variables;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
+import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 /**
@@ -17,27 +20,59 @@ import java.util.List;
 
 @Path("/group")
 public class GroupService {
-    private EntityManager em;
+    private EntityManager em = Variables.em;
+
+
     @GET
     @Path("all")
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     public List<Group> findAllParents() {
-        if (em == null) {
-            if (Variables.em == null) {
-                Variables.em = Persistence.createEntityManagerFactory("JpaBasicsTutorial").createEntityManager();
-            }
-            em = Variables.em;
-        }
-//        System.out.println("ASDASDASD");
+        //em = Variables.em;
         TypedQuery<Group> query = em.createQuery("SELECT a FROM  group a", Group.class);
-
         return query.getResultList();
     }
 
-    /*public Group createGroup(int id, String name, String genre) {
-
+    @GET
+    @Path("byId")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Group findGroup(@QueryParam("id") int id) {
+        TypedQuery<Group> query = em.createQuery("SELECT a FROM  group a where id=" + id, Group.class);
+        return query.getSingleResult();
     }
 
+    @GET
+    @Path("create")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Group createGroup(@QueryParam("name") String name, @QueryParam("univ_id") int univ_id) {
+        EntityTransaction transaction = em.getTransaction();
+        University u = em.createQuery("select u from university u where id=" + univ_id, University.class).getSingleResult();
+        transaction.begin();
+        Group g = new Group();
+        g.setNameGroup(name);
+        g.setUniversity(u);
+        em.persist(g);
+        transaction.commit();
+        return g;
+    }
+
+    @GET
+    @Path("remove")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String removeGroup(@QueryParam("id") int id) {
+        em.getTransaction().begin();
+        try {
+            em.remove(em.find(Group.class, id));
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            return "Not Removed";
+        }
+        em.getTransaction().commit();
+        /*Query query =em.createQuery("DELETE FROM group g where id="+id);*/
+        //if(query.executeUpdate()==0)return "Not Removed";
+        return "Removed";
+    }
+
+/*
     public void removeGroup(int id) {
 
     }
@@ -46,9 +81,6 @@ public class GroupService {
 
     }
 
-    public Group findGroup(int id) {
-
-    }
 
     public List<Group> findAllGroups() {
         

@@ -102,7 +102,7 @@ public class HelloServlet extends HttpServlet {
         artist = service.findArtist(1);
         resp.getWriter().println(String.format("Found: %s\n", artist));
 
-        test_test.services.UniversityService parserv = new test_test.services.UniversityService(em);
+        com.avilyne.rest.resource.UniversityService parserv = new com.avilyne.rest.resource.UniversityService(em);
         resp.getWriter().println("--- Create and persist parent ---");
         transaction = em.getTransaction();
         transaction.begin();

@@ -25,8 +25,6 @@ public class UserService {
     @Path("test")
     @Produces(MediaType.APPLICATION_JSON)
     public User getUserByName(
-/*            @PathParam ("name"    ) String name,
-            @QueryParam("password") String pass*/
     ) {
         if (em == null) {
             if (Variables.em == null) {
