@@ -22,7 +22,6 @@ import java.util.List;
 public class GroupService {
     private EntityManager em = Variables.em;
 
-
     @GET
     @Path("all")
     @Produces(MediaType.APPLICATION_JSON)
@@ -71,18 +70,4 @@ public class GroupService {
         //if(query.executeUpdate()==0)return "Not Removed";
         return "Removed";
     }
-
-/*
-    public void removeGroup(int id) {
-
-    }
-
-    public Group changeGroupGenre(int id, String genre) {
-
-    }
-
-
-    public List<Group> findAllGroups() {
-        
-    }*/
 }
