@@ -193,13 +193,11 @@ public class HelloServlet extends HttpServlet {
         transaction.commit();
 
         RaspService serv = new RaspService();
-        serv.addRasp(1, 1, "315-15", "ОПЕРАЦИОННЫЕ СИСТЕМЫ", Type.Laboratory.toString(), "", "SSAU", "6212", "false");
-        serv.addRasp(1, 1, "519-14", "Практикум на ЭВМ", Type.Laboratory.toString(), "", "SSAU", "6212", "false");
-        serv.addRasp(1, 1, "315-15", "ОПЕРАЦИОННЫЕ СИСТЕМЫ", Type.Laboratory.toString(), "", "SSAU", "6212", "false");
-        serv.addRasp(1, 1, "519-14", "Практикум на ЭВМ", Type.Laboratory.toString(), "", "SSAU", "6212", "false");
-        serv.addRasp(2, 1, "423-14", "ДИФФЕРЕНЦИАЛЬНЫЕ И РАЗНОСТНЫЕ УРАВНЕНИЯ", Type.Practice.toString(), "", "SSAU", "6212", "false");
+        serv.addRasp(1, 1, "315-15/519-14", "ОПЕРАЦИОННЫЕ СИСТЕМЫ/Практикум на ЭВМ", Type.Laboratory.toString(), "", "SSAU", "6212", "false");
+        serv.addRasp(2, 1, "315-15/519-14", "ОПЕРАЦИОННЫЕ СИСТЕМЫ/Практикум на ЭВМ", Type.Laboratory.toString(), "", "SSAU", "6212", "false");
+        serv.addRasp(3, 1, "423-14", "ДИФФЕРЕНЦИАЛЬНЫЕ И РАЗНОСТНЫЕ УРАВНЕНИЯ", Type.Practice.toString(), "", "SSAU", "6212", "false");
         //понедельник
-/*
+
         serv.addRasp(2, 2, "423-14", "ТЕОРИЯ АВТОМАТОВ И ФОРМАЛЬНЫХ ЯЗЫКОВ", Type.Lectory.toString(), "Чигарина", "SSAU", "6212", "false");
         serv.addRasp(3, 2, "419-14", "ТЕОРИЯ АВТОМАТОВ И ФОРМАЛЬНЫХ ЯЗЫКОВ", Type.Practice.toString(), "", "SSAU", "6212", "false");
         //вторник
@@ -210,9 +208,9 @@ public class HelloServlet extends HttpServlet {
         serv.addRasp(5, 3, "503-14", "БЕЗОПАСНОСТЬ ЖИЗНЕДЕЯТЕЛЬНОСТИ", Type.Lectory.toString(), "Терентьев А. В.", "SSAU", "6212", "false");
         //среда
 
-        serv.addRasp(1, 4, "Военная Кафедра", "Военная Кафедра", Type.Practice.toString(), "", "SSAU", "6212", "false");
-        serv.addRasp(2, 4, "Военная Кафедра", "Военная Кафедра", Type.Practice.toString(), "", "SSAU", "6212", "false");
-        serv.addRasp(3, 4, "Военная Кафедра", "Военная Кафедра", Type.Practice.toString(), "", "SSAU", "6212", "false");
+        serv.addRasp(1, 4, "Военная Кафедра", "", Type.Practice.toString(), "", "SSAU", "6212", "false");
+        serv.addRasp(2, 4, "Военная Кафедра", "", Type.Practice.toString(), "", "SSAU", "6212", "false");
+        serv.addRasp(3, 4, "Военная Кафедра", "", Type.Practice.toString(), "", "SSAU", "6212", "false");
         //четверг
 
         serv.addRasp(3, 5, "421-5", "Физика", Type.Practice.toString(), "доц. Шацкий А. В.", "SSAU", "6212", "false");
@@ -226,12 +224,12 @@ public class HelloServlet extends HttpServlet {
         serv.addRasp(3, 6, "431-14", "Правоведение", Type.Practice.toString(), "", "SSAU", "6212", "false");
         //суббота
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        serv.addRasp(4, 1+6, "423-14", "Дифференциальные и разностные уравнения", Type.Lectory.toString(), "", "SSAU", "6112", "true");
-        serv.addRasp(5, 1+6, "406-3", "Физика", Type.Laboratory.toString(), "", "SSAU", "6112", "true");
-        serv.addRasp(6, 1+6, "406-3", "Физика", Type.Laboratory.toString(), "", "SSAU", "6112", "true");
+        serv.addRasp(4, 7, "423-14", "Дифференциальные и разностные уравнения", Type.Lectory.toString(), "", "SSAU", "6212", "true");
+        serv.addRasp(5, 7, "406-3", "Физика", Type.Laboratory.toString(), "", "SSAU", "6212", "true");
+        serv.addRasp(6, 7, "406-3", "Физика", Type.Laboratory.toString(), "", "SSAU", "6212", "true");
         //понедельник
 
-        serv.addRasp(4, 2+6, "Теория автоматов и формальных языков", "", Type.Practice.toString(), "", "SSAU", "6112", "true");
+        serv.addRasp(4, 2 + 6, "Теория автоматов и формальных языков", "", Type.Practice.toString(), "", "SSAU", "6212", "true");
         serv.addRasp(5, 2+6, "306-15", "ОПЕРАЦИОННЫЕ СИСТЕМЫ", Type.Laboratory.toString(), "", "SSAU", "6212", "true");
         serv.addRasp(5, 2+6, "314-15", "Теория автоматов и формальных языков", Type.Laboratory.toString(), "", "SSAU", "6212", "true");
         serv.addRasp(6, 2+6, "306-15", "ОПЕРАЦИОННЫЕ СИСТЕМЫ", Type.Laboratory.toString(), "", "SSAU", "6212", "true");
@@ -241,24 +239,24 @@ public class HelloServlet extends HttpServlet {
         serv.addRasp(2, 3+6, "Спорткомплекс", "Физкультура", Type.Practice.toString(), "", "SSAU", "6212", "true");
         serv.addRasp(3, 3+6, "513-14", "ОПЕРАЦИОННЫЕ СИСТЕМЫ", Type.Lectory.toString(), "проф. Востокин С. В.", "SSAU", "6212", "true");
         serv.addRasp(4, 3+6, "513-14", "ДИФФЕРЕНЦИАЛЬНЫЕ И РАЗНОСТНЫЕ УРАВНЕНИЯ", Type.Lectory.toString(), "проф. Щепакина Е. А.", "SSAU", "6212", "true");
-        serv.addRasp(5, 3+6, "513-14", "Физика", Type.Lectory.toString(), "", "SSAU", "6112", "true");
+        serv.addRasp(5, 3 + 6, "513-14", "Физика", Type.Lectory.toString(), "", "SSAU", "6212", "true");
         //среда
 
-        serv.addRasp(1, 4+6, "401-14", "Безопасность жизнедеятельности", Type.Laboratory.toString(), "", "SSAU", "6112", "true");
-        serv.addRasp(2, 4+6, "401-14", "Безопасность жизнедеятельности", Type.Laboratory.toString(), "", "SSAU", "6112", "true");
-        serv.addRasp(5, 4+6, "519-14", "Практикум на ЭВМ", Type.Laboratory.toString(), "", "SSAU", "6112", "true");
-        serv.addRasp(6, 4+6, "519-14", "Практикум на ЭВМ", Type.Laboratory.toString(), "", "SSAU", "6112", "true");
+        serv.addRasp(1, 4 + 6, "401-14", "Безопасность жизнедеятельности", Type.Laboratory.toString(), "", "SSAU", "6212", "true");
+        serv.addRasp(2, 4 + 6, "401-14", "Безопасность жизнедеятельности", Type.Laboratory.toString(), "", "SSAU", "6212", "true");
+        serv.addRasp(5, 4 + 6, "519-14", "Практикум на ЭВМ", Type.Laboratory.toString(), "", "SSAU", "6212", "true");
+        serv.addRasp(6, 4 + 6, "519-14", "Практикум на ЭВМ", Type.Laboratory.toString(), "", "SSAU", "6212", "true");
         //четверг
 
-        serv.addRasp(4, 5+6, "505-14", "Физика", Type.Practice.toString(), "", "SSAU", "6112", "true");
-        serv.addRasp(5, 5+6, "505a-14", "Правоведение", Type.Practice.toString(), "", "SSAU", "6112", "true");
-        serv.addRasp(6, 5+6, "Физкультура", "Физкультура", Type.Practice.toString(), "", "SSAU", "6112", "true");
+        serv.addRasp(4, 5 + 6, "505-14", "Физика", Type.Practice.toString(), "", "SSAU", "6212", "true");
+        serv.addRasp(5, 5 + 6, "505a-14", "Правоведение", Type.Practice.toString(), "", "SSAU", "6212", "true");
+        serv.addRasp(6, 5 + 6, "Физкультура", "Физкультура", Type.Practice.toString(), "", "SSAU", "6212", "true");
         //пятница
 
-        serv.addRasp(2, 6+6, "430-14", "ТЕОРИЯ ВЕРОЯТНОСТЕЙ И МАТЕМАТИЧЕСКАЯ СТАТИСТИКА (ВАРИАТИВНАЯ ЧАСТЬ)", Type.Laboratory.toString(), "", "SSAU", "6112", "true");
-        serv.addRasp(3, 6+6, "430-14", "ТЕОРИЯ ВЕРОЯТНОСТЕЙ И МАТЕМАТИЧЕСКАЯ СТАТИСТИКА (ВАРИАТИВНАЯ ЧАСТЬ)", Type.Laboratory.toString(), "", "SSAU", "6112", "true");
+        serv.addRasp(2, 6 + 6, "430-14", "ТЕОРИЯ ВЕРОЯТНОСТЕЙ И МАТЕМАТИЧЕСКАЯ СТАТИСТИКА (ВАРИАТИВНАЯ ЧАСТЬ)", Type.Laboratory.toString(), "", "SSAU", "6212", "true");
+        serv.addRasp(3, 6 + 6, "430-14", "ТЕОРИЯ ВЕРОЯТНОСТЕЙ И МАТЕМАТИЧЕСКАЯ СТАТИСТИКА (ВАРИАТИВНАЯ ЧАСТЬ)", Type.Laboratory.toString(), "", "SSAU", "6212", "true");
         //суббота
-*/
+
 
     }
 }

@@ -47,6 +47,7 @@ public class UserService {
         return query.getSingleResult();
     }
 
+
     @GET
     @Path("create")
     @Produces(MediaType.APPLICATION_JSON)

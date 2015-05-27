@@ -83,7 +83,7 @@ public class RaspService {
         r.setUniversity(u);
         r.setName_pair(name);
         r.setNumber_of_pair(number_of_pair);
-        r.setOdd(Boolean.parseBoolean(odd.toLowerCase()));
+        r.setOdd(Boolean.parseBoolean(odd));
         r.setType(t);
         r.setTeacher(teacher);
         r.setCab(cab);
