@@ -69,7 +69,8 @@ public class RaspService {
             @QueryParam("name") String name,
             @QueryParam("odd") String odd,
             @QueryParam("number_of_pair") int number,
-            @QueryParam("type") String type
+            @QueryParam("type") String type,
+            @QueryParam("teacher") String teacher
     ) {
         EntityTransaction transaction = em.getTransaction();
         University u = em.createQuery(
@@ -88,7 +89,7 @@ public class RaspService {
         r.setNumber_of_pair(number);
         r.setOdd(Boolean.parseBoolean(odd.toLowerCase()));
         r.setType(t);
-
+        r.setTeacher(teacher);
         em.persist(r);
         transaction.commit();
         return r;

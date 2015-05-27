@@ -28,6 +28,10 @@ public class Rasp {
 
     @Column
     String name_pair;
+
+    @Column
+    String teacher;
+
     @Column
     Boolean odd;
     @Column
@@ -50,6 +54,14 @@ public class Rasp {
                 ", number_of_pair=" + number_of_pair +
                 ", type=" + type +
                 '}';
+    }
+
+    public String getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(String teacher) {
+        this.teacher = teacher;
     }
 
     public Integer getId() {

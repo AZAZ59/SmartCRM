@@ -1,5 +1,6 @@
 package test_test;
 
+import com.avilyne.rest.resource.RaspService;
 import test_test.services.Variables;
 
 import javax.persistence.EntityManager;
@@ -189,8 +190,10 @@ public class HelloServlet extends HttpServlet {
         transaction.commit();
 
 //        transaction.begin();
-//        com.avilyne.rest.resource.RaspService serv = new RaspService();
-//        serv.addRasp_2("SSAU","123","test_!odd","true",1,Type.Practice.toString());
+        RaspService serv = new RaspService();
+        serv.addRasp("SSAU", "123", "test_!odd", "true", 1, Type.Practice.toString(), "teach_1");
+        serv.addRasp("SSAU", "123", "test_!odd", "true", 1, Type.Practice.toString(), "teach_2");
+        serv.addRasp("SSAU", "123", "test_!odd", "true", 1, Type.Practice.toString(), "teach_3");
 //        transaction.commit();
     }
 }
