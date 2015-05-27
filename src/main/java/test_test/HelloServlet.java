@@ -150,6 +150,7 @@ public class HelloServlet extends HttpServlet {
         transaction.begin();
 
         University university = new University();
+        University university2 = new University();
         Group group = new Group();
         Group group2 = new Group();
         Set<Group> groupSet = new HashSet<Group>();
@@ -166,6 +167,7 @@ public class HelloServlet extends HttpServlet {
         user.setRights(userRights);
 
         university.setName("SSAU");
+        university2.setName("SSAU_2");
 
         group.setNameGroup("6212");
         group.setUniversity(university);
@@ -185,6 +187,7 @@ public class HelloServlet extends HttpServlet {
         em.persist(group);
         em.persist(group2);
         em.persist(university);
+        em.persist(university2);
 
 
         transaction.commit();
