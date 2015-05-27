@@ -34,18 +34,18 @@ public class RaspService {
     }
 
     @GET
-    @Path("byId")
+    @Path("byGroupId")
     @Produces(MediaType.APPLICATION_JSON)
-    public Rasp findRasp(@QueryParam("id") int id) {
-        TypedQuery<Rasp> query = em.createQuery("SELECT a FROM  group a where id=" + id, Rasp.class);
-        return query.getSingleResult();
+    public List<Rasp> findRasp(@QueryParam("id") int id) {
+        TypedQuery<Rasp> query = em.createQuery("SELECT a FROM  rasp a where a.group.id=" + id, Rasp.class);
+        return query.getResultList();
     }
 
     @GET
     @Path("byUniversity")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Rasp> findUserByName(@QueryParam("university") String name) {
-        TypedQuery<Rasp> query = em.createQuery("SELECT a FROM  group a where a.university.name like \'" + name + "\'", Rasp.class);
+        TypedQuery<Rasp> query = em.createQuery("SELECT a FROM  rasp a where a.university.name like \'" + name + "\'", Rasp.class);
         return query.getResultList();
     }
 
@@ -105,10 +105,10 @@ public class RaspService {
     ) {
         EntityTransaction transaction = em.getTransaction();
         University u = em.createQuery(
-                "select u from university u where u.name=\':name\'", University.class
+                "select u from university u where u.name=:name", University.class
         ).setParameter("name", name_univ).getSingleResult();
         Group g = em.createQuery(
-                "select g from group g where g.nameGroup=\':name\'", Group.class
+                "select g from group g where g.nameGroup=:name", Group.class
         ).setParameter("name", name_group).getSingleResult();
         Type t = Type.valueOf(type);
         transaction.begin();
