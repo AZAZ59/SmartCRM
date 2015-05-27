@@ -19,8 +19,13 @@ public class Rasp {
     @JoinColumn(name = "Groups_id", nullable = false)
     @XmlTransient
     Group group;
-    @XmlValue
-    String gr_name = group.nameGroup;
+
+    @XmlElement(name = "group_name")
+    String gr_name = "";
+
+    @XmlElement(name = "univ_name")
+    String un_name = "";
+
     @Column
     String name_pair;
     @Column
@@ -60,6 +65,7 @@ public class Rasp {
     }
 
     public void setUniversity(University university) {
+        this.un_name = university.getName();
         this.university = university;
     }
 
@@ -68,6 +74,7 @@ public class Rasp {
     }
 
     public void setGroup(Group group) {
+        this.gr_name = group.nameGroup;
         this.group = group;
     }
 
