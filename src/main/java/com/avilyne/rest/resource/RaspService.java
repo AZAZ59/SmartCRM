@@ -64,13 +64,9 @@ public class RaspService {
     @Path("add")
     @Produces(MediaType.APPLICATION_JSON)
     public Rasp addRasp(
-            @QueryParam("university") String name_univ,
+            @QueryParam("number_of_pair") int number_of_pair, @QueryParam("day") int day, @QueryParam("cab") String cab, @QueryParam("name") String name, @QueryParam("type") String type, @QueryParam("teacher") String teacher, @QueryParam("university") String name_univ,
             @QueryParam("group") String name_group,
-            @QueryParam("name") String name,
-            @QueryParam("odd") String odd,
-            @QueryParam("number_of_pair") int number,
-            @QueryParam("type") String type,
-            @QueryParam("teacher") String teacher
+            @QueryParam("odd") String odd
     ) {
         EntityTransaction transaction = em.getTransaction();
         University u = em.createQuery(
@@ -86,10 +82,12 @@ public class RaspService {
         r.setGroup(g);
         r.setUniversity(u);
         r.setName_pair(name);
-        r.setNumber_of_pair(number);
+        r.setNumber_of_pair(number_of_pair);
         r.setOdd(Boolean.parseBoolean(odd.toLowerCase()));
         r.setType(t);
         r.setTeacher(teacher);
+        r.setCab(cab);
+        r.setDay(day);
         em.persist(r);
         transaction.commit();
         return r;

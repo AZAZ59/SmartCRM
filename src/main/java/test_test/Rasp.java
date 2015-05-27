@@ -33,6 +33,12 @@ public class Rasp {
     String teacher;
 
     @Column
+    String cab;
+
+    @Column
+    int day;
+
+    @Column
     Boolean odd;
     @Column
     int number_of_pair;
@@ -54,6 +60,22 @@ public class Rasp {
                 ", number_of_pair=" + number_of_pair +
                 ", type=" + type +
                 '}';
+    }
+
+    public String getCab() {
+        return cab;
+    }
+
+    public void setCab(String cab) {
+        this.cab = cab;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
     }
 
     public String getTeacher() {
