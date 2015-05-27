@@ -185,6 +185,12 @@ public class HelloServlet extends HttpServlet {
         em.persist(group2);
         em.persist(university);
 
+
         transaction.commit();
+
+//        transaction.begin();
+//        com.avilyne.rest.resource.RaspService serv = new RaspService();
+//        serv.addRasp_2("SSAU","123","test_!odd","true",1,Type.Practice.toString());
+//        transaction.commit();
     }
 }

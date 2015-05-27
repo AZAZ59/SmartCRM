@@ -40,6 +40,14 @@ public class UserService {
     }
 
     @GET
+    @Path("byName")
+    @Produces(MediaType.APPLICATION_JSON)
+    public User findUserByName(@QueryParam("name") String name) {
+        TypedQuery<User> query = em.createQuery("SELECT a FROM  user a where a.name like \'" + name + "\'", User.class);
+        return query.getSingleResult();
+    }
+
+    @GET
     @Path("create")
     @Produces(MediaType.APPLICATION_JSON)
     public User createUser(
@@ -68,6 +76,35 @@ public class UserService {
         transaction.commit();
         return user;
     }
+
+    @GET
+    @Path("createOut")
+    @Produces(MediaType.APPLICATION_JSON)
+    public User createUser(
+            @QueryParam("name") String name,
+            @QueryParam("pass") String pass
+    ) {
+        EntityTransaction transaction = em.getTransaction();
+        Group g = em.find(Group.class, 1);
+        UserRights ur = new UserRights();
+        User user = new User();
+
+        transaction.begin();
+        {
+            ur.setUser(user);
+            user.setName(name);
+            user.setPassword(pass);
+            user.setGroup(g);
+            user.setRights(ur);
+
+            em.persist(ur);
+            em.persist(user);
+        }
+        transaction.commit();
+        return user;
+    }
+
+
 
     @GET
     @Path("remove")

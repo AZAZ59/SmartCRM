@@ -19,6 +19,7 @@ public class University {
     @XmlTransient
     private Set<Group> groups;
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;

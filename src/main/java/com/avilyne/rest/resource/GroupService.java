@@ -40,9 +40,28 @@ public class GroupService {
     }
 
     @GET
+    @Path("byName")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Group findGroup(@QueryParam("name") String name) {
+        TypedQuery<Group> query = em.createQuery("SELECT a FROM group a where nameGroup like \'" + name + "\'", Group.class);
+        return query.getSingleResult();
+    }
+
+    @GET
+    @Path("byUniversity")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Group> findUserByName(@QueryParam("university") String name) {
+        TypedQuery<Group> query = em.createQuery("SELECT a FROM  group a where a.university.name like \'" + name + "\'", Group.class);
+        return query.getResultList();
+    }
+
+    @GET
     @Path("create")
     @Produces(MediaType.APPLICATION_JSON)
-    public Group createGroup(@QueryParam("name") String name, @QueryParam("univ_id") int univ_id) {
+    public Group createGroup(
+            @QueryParam("name") String name,
+            @QueryParam("univ_id")
+            int univ_id) {
         EntityTransaction transaction = em.getTransaction();
         University u = em.createQuery("select u from university u where id=" + univ_id, University.class).getSingleResult();
         transaction.begin();
