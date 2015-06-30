@@ -11,7 +11,7 @@
     <!--</context-param>-->
     <servlet>
         <servlet-name>HelloServlet</servlet-name>
-        <servlet-class>test_test.HelloServlet</servlet-class>
+        <servlet-class>CRM.model.HelloServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
@@ -25,19 +25,19 @@
         <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
         <init-param>
             <param-name>com.sun.jersey.config.property.packages</param-name>
-            <param-value>com.avilyne.rest.resource</param-value>
+            <param-value>CRM.resource</param-value>
         </init-param>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>MyWebApplication</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
-
-    <servlet-mapping>
-        <servlet-name>MyWebApplication</servlet-name>
-        <url-pattern>/rest/*</url-pattern>
-    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - CRM@localhost" uuid="06e48cac-e060-40f3-8b31-5120c945c430">
+    <database-info product="MySQL" version="5.6.24-0ubuntu2" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="CRM"/>
+    <table name="Groups" schema="" catalog="CRM" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nameGroup" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="University_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_20iaxekn3ovrkf8be06ek5bt8" columns="University_id" ref-table="University" ref-schema="" ref-catalog="CRM" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_9pp8hhauicqpwb5lxc2h98ry4" table="Message" schema="" catalog="CRM" columns="Groups_id"/>
+      <exported-key name="FK_svgvjht6a5mqsyuhkee2xods5" table="Rasps" schema="" catalog="CRM" columns="Groups_id"/>
+      <exported-key name="FK_7ybdmsgw1m78jq6tt7slhfl9s" table="User" schema="" catalog="CRM" columns="Groups_id"/>
+      <index name="FK_20iaxekn3ovrkf8be06ek5bt8" unique="false" columns="University_id"/>
+    </table>
+    <table name="Message" schema="" catalog="CRM" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="DATE_FIELD" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="message" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TIME_FIELD" sqlType="TIME" precision="8" scale="0" nullable="true" jdbcType="92"/>
+      <column name="Groups_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_9pp8hhauicqpwb5lxc2h98ry4" columns="Groups_id" ref-table="Groups" ref-schema="" ref-catalog="CRM" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_9pp8hhauicqpwb5lxc2h98ry4" unique="false" columns="Groups_id"/>
+    </table>
+    <table name="Rasps" schema="" catalog="CRM" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="cab" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="day" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="gr_name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name_pair" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="number_of_pair" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="odd" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="teacher" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="type" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="un_name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Groups_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="University_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_d69859jj6ylddj6y1rvnsrfkp" columns="University_id" ref-table="University" ref-schema="" ref-catalog="CRM" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_svgvjht6a5mqsyuhkee2xods5" columns="Groups_id" ref-table="Groups" ref-schema="" ref-catalog="CRM" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_d69859jj6ylddj6y1rvnsrfkp" unique="false" columns="University_id"/>
+      <index name="FK_svgvjht6a5mqsyuhkee2xods5" unique="false" columns="Groups_id"/>
+    </table>
+    <table name="University" schema="" catalog="CRM" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_20iaxekn3ovrkf8be06ek5bt8" table="Groups" schema="" catalog="CRM" columns="University_id"/>
+      <exported-key name="FK_d69859jj6ylddj6y1rvnsrfkp" table="Rasps" schema="" catalog="CRM" columns="University_id"/>
+    </table>
+    <table name="User" schema="" catalog="CRM" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Groups_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="rights_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_7ybdmsgw1m78jq6tt7slhfl9s" columns="Groups_id" ref-table="Groups" ref-schema="" ref-catalog="CRM" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_saakiashbvpsrjgpt175gaskq" columns="rights_id" ref-table="UserRights" ref-schema="" ref-catalog="CRM" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_cv85gyilmvs1loquaegqrn12w" table="UserRights" schema="" catalog="CRM" columns="user_id"/>
+      <index name="FK_7ybdmsgw1m78jq6tt7slhfl9s" unique="false" columns="Groups_id"/>
+      <index name="FK_saakiashbvpsrjgpt175gaskq" unique="false" columns="rights_id"/>
+    </table>
+    <table name="UserRights" schema="" catalog="CRM" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="rights" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_cv85gyilmvs1loquaegqrn12w" columns="user_id" ref-table="User" ref-schema="" ref-catalog="CRM" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_saakiashbvpsrjgpt175gaskq" table="User" schema="" catalog="CRM" columns="rights_id"/>
+      <index name="FK_cv85gyilmvs1loquaegqrn12w" unique="false" columns="user_id"/>
+    </table>
+  </data-source>
+</component>

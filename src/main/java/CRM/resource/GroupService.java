@@ -1,11 +1,9 @@
-package com.avilyne.rest.resource;
+package CRM.resource;
 
-import test_test.Group;
-import test_test.University;
-import test_test.services.Variables;
+import CRM.Variables.Variables;
+import CRM.model.Group;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -46,33 +44,6 @@ public class GroupService {
         TypedQuery<Group> query = em.createQuery("SELECT a FROM group a where nameGroup like \'" + name + "\'", Group.class);
         return query.getSingleResult();
     }
-
-    @GET
-    @Path("byUniversity")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Group> findUserByName(@QueryParam("university") String name) {
-        TypedQuery<Group> query = em.createQuery("SELECT a FROM  group a where a.university.name like \'" + name + "\'", Group.class);
-        return query.getResultList();
-    }
-
-    @GET
-    @Path("create")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Group createGroup(
-            @QueryParam("name") String name,
-            @QueryParam("univ_id")
-            int univ_id) {
-        EntityTransaction transaction = em.getTransaction();
-        University u = em.createQuery("select u from university u where id=" + univ_id, University.class).getSingleResult();
-        transaction.begin();
-        Group g = new Group();
-        g.setNameGroup(name);
-        g.setUniversity(u);
-        em.persist(g);
-        transaction.commit();
-        return g;
-    }
-
     @GET
     @Path("remove")
     @Produces(MediaType.APPLICATION_JSON)
