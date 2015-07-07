@@ -22,7 +22,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+<<<<<<< HEAD
         <module name="SmartCRM" />
+=======
+        <module name="TestServer" />
+>>>>>>> origin/master
       </profile>
     </annotationProcessing>
   </component>
